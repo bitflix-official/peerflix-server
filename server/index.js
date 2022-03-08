@@ -164,6 +164,10 @@ api.all('/torrents/:infoHash/files/:path([^"]+)', findTorrent, function (req, re
     return res.sendStatus(404);
   }
 
+  if (file.name.endsWith('.mkv')) {
+    req.query.ffmpeg = 'remux'
+  }
+
   if (typeof req.query.ffmpeg !== 'undefined') {
     return require('./ffmpeg')(req, res, torrent, file);
   }

@@ -1,5 +1,9 @@
 'use strict';
 
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffmpeg = require('fluent-ffmpeg');
+ffmpeg.setFfmpegPath(ffmpegPath);
+
 var path = require('path'),
   fs = require('fs'),
   pump = require('pump');
