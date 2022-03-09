@@ -32,10 +32,8 @@ module.exports = function (req, res, torrent, file) {
     res.type('video/webm');
     var command = ffmpeg(file.createReadStream())
       .videoCodec('libvpx').audioCodec('libvorbis').format('webm')
-      .audioBitrate(128)
-      .videoBitrate(1024)
       .outputOptions([
-        //'-threads 2',
+        '-threads 2',
         '-deadline realtime',
         '-error-resilient 1'
       ])
